@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.cloud.tools.endpoints-framework-client'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.cloud.tools:endpoints-framework-gradle-plugin:1.0.2'
+    }
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.3"
+
+    defaultConfig {
+        applicationId "com.udacity.gradle.builditbigger"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    /*
+    flavorDimensions "tier"
+    productFlavors {
+        free {
+            dimension "tier"
+            applicationId "com.udacity.gradle.flavorspecificactivity.free"
+        }
+        paid {
+            dimension "tier"
+            applicationId "com.udacity.gradle.flavorspecificactivity.paid"
+        }
+    }*/
+
+}
+/*
+android {
+    buildTypes {
+        debug {
+            applicationIdSuffix "debug"
+        }
+    }
+}
+}*/
+
+ext {
+    supportLibVersion = '26.1.0'
+    constraintLayoutLibVersion = '1.1.0'
+    junitLibVersion = '4.12'
+    testRunnerVersion = '1.0.2'
+    expressoCoreVersion = '3.0.2'
+    googleClientVersion = '1.23.0'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    endpointsServer project(path: ':backend', configuration: 'endpoints')
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation "com.google.api-client:google-api-client:${googleClientVersion}"
+    implementation "com.google.http-client:google-http-client-android:${googleClientVersion}"
+    implementation 'com.google.code.findbugs:jsr305:3.0.1'
+    implementation project(':javaJokes')
+    implementation project(':jokeviewer')
+
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:${expressoCoreVersion}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testImplementation "junit:junit:${junitLibVersion}"
+
+    /*
+    freeImplementation ''
+     */
+
+    // Butterknife annotation
+    implementation 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+
+}
+
+task buildZip(type: Zip) {
+
+}

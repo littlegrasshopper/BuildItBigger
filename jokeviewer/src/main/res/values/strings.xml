@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JokeViewer</string>
+    <string name="default_joke">Hey, are we funny today?</string>
+</resources>
