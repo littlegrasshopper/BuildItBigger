@@ -15,19 +15,21 @@ repositories {
     jcenter()
 }
 
+//appengine.tools.cloudSdkHome="/Users/fonda/dev/google-cloud-sdk"
+
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'com.google.cloud.tools.appengine'
 apply plugin: 'com.google.cloud.tools.endpoints-framework-server'
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
     implementation 'com.google.endpoints:endpoints-framework:2.0.9'
     implementation 'javax.inject:javax.inject:1'
 
     implementation 'javax.servlet:servlet-api:2.5'
-    implementation 'com.google.api-client:google-api-client:1.23.0'
-    implementation 'com.google.http-client:google-http-client-android:1.23.0'
+    implementation "com.google.api-client:google-api-client:${rootProject.ext.googleClientVersion}"
+    implementation "com.google.http-client:google-http-client-android:${rootProject.ext.googleClientVersion}"
+
+    implementation project(':javaJokes')
 }

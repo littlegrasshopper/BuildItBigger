@@ -12,6 +12,7 @@
         android:id="@+id/tvJokeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/joke_text_size"
         android:text="@string/default_joke" />
 
 </RelativeLayout>

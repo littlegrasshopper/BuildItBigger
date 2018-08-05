@@ -4,8 +4,10 @@
 
     <application
         android:allowBackup="false"
+        android:launchMode="singleTop"
         android:label="@string/app_name">
-        <activity android:name=".JokeViewerMainActivity"
+        <activity
+            android:name=".JokeViewerMainActivity"
             android:label="@string/app_name" />
     </application>
 
