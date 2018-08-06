@@ -33,10 +33,8 @@ import static org.hamcrest.Matchers.is;
  * https://developer.android.com/studio/test/espresso-test-recorder
  * Tests are:
  * 1) Click on Tell Joke button in the main activity.
- * 2) Verify that the interstitial ad is displayed. (DOESN'T COME UP DURING TEST)
- * 3) Click to dismiss the ad. (see Step #2)
- * 4) Verify that the first joke from the data model is displayed.
- * 5) Click on the Back button.
+ * 2) Verify that the first joke from the data model is displayed.
+ * 3) Click on the Back button.
  */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -66,28 +64,7 @@ public class MainActivityFreeTest {
                                 1),
                         isDisplayed()));
         appCompatButton.perform(click());
-
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        /** FOR SOME REASON, INTERSTITIAL DOESN"T COME UP
-
-        try {
-            Thread.sleep(700);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction imageButton = onView(
-                allOf(withContentDescription("Interstitial close button"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("com.google.android.gms.ads.internal.overlay.zzh")),
-                                        1),
-                                0),
-                        isDisplayed()));
-        imageButton.perform(click());
-        **/
+        
 
         // In free version, test to see if the first joke is returned.
         onView(withId(R.id.tvJokeView))

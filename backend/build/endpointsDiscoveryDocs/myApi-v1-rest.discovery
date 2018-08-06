@@ -24,16 +24,16 @@
    "httpMethod": "GET",
    "id": "myApi.getJoke",
    "parameterOrder": [
-    "name"
+    "isRandom"
    ],
    "parameters": {
-    "name": {
+    "isRandom": {
      "location": "path",
      "required": true,
      "type": "boolean"
     }
    },
-   "path": "{name}",
+   "path": "{isRandom}",
    "response": {
     "$ref": "MyBean"
    },

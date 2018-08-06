@@ -22,9 +22,14 @@ import javax.inject.Named;
 )
 public class MyEndpoint {
 
-    /** A simple endpoint method that takes a name and says Hi back */
+    /**
+     *  Simple endpoint method that returns a joke to the caller.
+     *  @param isRandom True to return a randomly selected joke (from a finite set),
+     *                  false to return just the first joke from the set.
+     *  @return MyBean wrapper around the content to return
+     */
     @ApiMethod(name = "getJoke")
-    public MyBean getJoke(@Named("name") boolean isRandom) {
+    public MyBean getJoke(@Named("isRandom") boolean isRandom) {
         MyBean response = new MyBean();
         Joker joker = new Joker();
         String joke = joker.getJoke(isRandom);
@@ -32,5 +37,4 @@ public class MyEndpoint {
 
         return response;
     }
-
 }

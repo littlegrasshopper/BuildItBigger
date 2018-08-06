@@ -48,7 +48,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    freeImplementation 'com.google.android.gms:play-services-ads:15.0.1'
     implementation "com.google.api-client:google-api-client:${rootProject.ext.googleClientVersion}"
     implementation "com.google.http-client:google-http-client-android:${rootProject.ext.googleClientVersion}"
     implementation 'com.google.code.findbugs:jsr305:3.0.1'

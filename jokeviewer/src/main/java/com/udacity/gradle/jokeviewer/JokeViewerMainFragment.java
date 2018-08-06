@@ -21,8 +21,11 @@ public class JokeViewerMainFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_jokeviewer, container, false);
         Intent intent = getActivity().getIntent();
-        String joke = intent.getStringExtra(JokeViewerMainActivity.EXTRA_JOKE);
-        TextView jokeView = (TextView) root.findViewById(R.id.tvJokeView);
+        String joke = "";
+        if (intent.hasExtra(JokeViewerMainActivity.EXTRA_JOKE)) {
+            joke = intent.getStringExtra(JokeViewerMainActivity.EXTRA_JOKE);
+        }
+        TextView jokeView = root.findViewById(R.id.tvJokeView);
         if (!TextUtils.isEmpty(joke)) {
             jokeView.setText(joke);
         }
